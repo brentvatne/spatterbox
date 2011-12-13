@@ -35,7 +35,7 @@ class TagPrettifier
 
   private
   def gets
-    @input_stream.gets
+    @input_stream.gets.chomp
   end
 
   def puts(str)
@@ -44,7 +44,10 @@ class TagPrettifier
   end
 
   def no_more_input?
-    scanner.eos?
+    if scanner.eos?
+      bad_input! unless stack.empty?
+      true
+    end
   end
 
   def print_open_tag
