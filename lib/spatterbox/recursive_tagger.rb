@@ -1,4 +1,4 @@
-require_relative 'xml_tag.rb'
+require_relative 'xml_tag'
 
 def recursively_tag(tokens, depth=0)
   return "" if tokens.empty?

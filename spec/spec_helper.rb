@@ -10,7 +10,7 @@ def input_buffer(fake_return_value)
 end
 
 def running_prettifier(next_on_buffer)
-  prettifier = TagPrettifier.new(input_buffer(next_on_buffer))
+  prettifier = TagPrettifier.new(input_buffer(next_on_buffer), StringIO.new)
   prettifier.send(:initialize_string_scanner)
   prettifier
 end

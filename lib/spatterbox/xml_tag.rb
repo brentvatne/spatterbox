@@ -1,7 +1,7 @@
 class XMLTag
   attr_reader :token, :depth, :space_per_indent
 
-  def initialize(token, depth, space_per_indent=2)
+  def initialize(token, depth=0, space_per_indent=2)
     @token = remove_brackets(token)
     @depth = depth
     @current_tag = wrap(@token)
