@@ -6,6 +6,7 @@ Hello! How are you? Thanks for taking the time to check my screening
 questions out.
 
 *Did you know?* I like to do Test Driven Development. Check out the `specs` directory to see the tests that I wrote while solving these problems.
+To run the specs, do a `bundle install && rake` the first time, then just `rake`. Tested with Ruby 1.9.3p0.
 
 Every question has been decently cleaned up, but given that this is
 simply a screening exam, I did not bother to write too many comments.
