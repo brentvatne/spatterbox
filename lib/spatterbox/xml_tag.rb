@@ -4,7 +4,6 @@ class XMLTag
   def initialize(token, depth=0, space_per_indent=2)
     @token = remove_brackets(token)
     @depth = depth
-    @current_tag = wrap(@token)
     @space_per_indent = space_per_indent
   end
 
@@ -19,10 +18,6 @@ class XMLTag
   private
   def indent
     " " * (space_per_indent * depth)
-  end
-
-  def wrap(token)
-    "<#{token}>"
   end
 
   def remove_brackets(token)
