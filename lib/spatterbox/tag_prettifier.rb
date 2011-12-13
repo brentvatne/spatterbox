@@ -30,7 +30,7 @@ class TagPrettifier
     return false unless tag = scanner.scan(/<\/\w*>/)
     bad_input! if stack.empty? or not stack.last.close[tag]
 
-    print_close_tag and increase_depth and parse_tags
+    print_close_tag and decrease_depth and parse_tags
   end
 
   private
