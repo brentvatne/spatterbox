@@ -18,6 +18,16 @@ eos
       prettifier.output_stream.rewind
       prettifier.output_stream.read.should == sample_output
     end
+
+    it "should raise an error for each of the malformed examples" do
+      expect { TagPrettifier.new(
+                input_buffer("<html><body><div></a></body></html>"), StringIO.new).prettify
+             }.to raise_error TagPrettifier::BadInputError
+
+      expect { TagPrettifier.new(
+                input_buffer("<html><body><div><a></div></a>"), StringIO.new).prettify
+             }.to raise_error TagPrettifier::BadInputError
+    end
   end
 
   describe "helper methods" do
@@ -68,27 +78,3 @@ eos
     end
   end
 end
-
-# def read
-#   until eos
-#     open_tag or close_tag
-#   end
-# end
-
-# def open_tag
-#   if next_tag_is_opening_tag?
-#     opening_tag = XMLTag.new(next_tag, current_depth)
-#     @stack << opening_tag
-#     opening_tag.indent
-#   end
-# end
-
-# #to indent, tag.indent.close
-# def close_tag
-#   if next_is_closing_tag?
-#     throw NoTagsLeftToClose if @stack.empty?
-#     throw AymmetricXMLError unless next_tag == (closing_tag = @stack.pop.close)
-#     closing_tag.indent
-#   end
-# end
-
