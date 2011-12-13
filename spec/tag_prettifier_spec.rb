@@ -32,7 +32,7 @@ eos
 
   describe "helper methods" do
     it "uses the input stream passed in to prettify" do
-      input = "from my input stream\n"
+      input = "from my input stream"
       prettifier = TagPrettifier.new(input_buffer(input))
       prettifier.send(:gets).should == input
     end
@@ -40,6 +40,8 @@ eos
     describe "parse_open_tag" do
       it "adds the tag to the stack" do
         prettifier = running_prettifier("<body>")
+
+        prettifier.stub!(:parse_tags)
         prettifier.stack.should == []
         prettifier.parse_open_tag
         prettifier.stack.first.token.should == "body"
